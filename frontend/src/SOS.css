@@ -1,0 +1,223 @@
+/* SOS.css */
+
+/* MAIN SOS LAYOUT */
+.sos-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  position: relative;
+  overflow: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+}
+
+/* DASHBOARD BUTTON (TOP RIGHT) */
+.sos-admin-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.sos-admin-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* CONTENT */
+.sos-content {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+.sos-title {
+  margin: 0 0 10px 0;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  letter-spacing: -1px;
+}
+
+.sos-subtitle {
+  margin: 0 0 30px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  font-weight: 500;
+  padding: 0 20px;
+}
+
+/* MAIN SOS BUTTON */
+.sos-main-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.sos-main-btn {
+  width: clamp(160px, 45vw, 200px);
+  height: clamp(160px, 45vw, 200px);
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: #f5576c;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 2px;
+  touch-action: manipulation;
+}
+
+.sos-main-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+.sos-main-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* STATE: RECORDING */
+.sos-main-btn-recording {
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+  color: white;
+}
+
+/* PULSE RING */
+.sos-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* STATUS */
+.sos-status {
+  margin: 0 0 25px 0;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 600;
+  color: white;
+  min-height: 28px;
+  padding: 0 20px;
+}
+
+/* RESULT CARD */
+.result-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: clamp(20px, 5vw, 30px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  margin: 0 15px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(15px, 4vw, 20px);
+}
+
+.result-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-block-full {
+  grid-column: 1 / -1;
+}
+
+.result-label {
+  font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+  color: #718096;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.result-severity {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.severity-high {
+  background: #fee;
+  color: #c53030;
+}
+
+.severity-low {
+  background: #e6ffed;
+  color: #22543d;
+}
+
+.result-confidence {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-weight: 800;
+  color: #667eea;
+}
+
+.result-incident {
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 700;
+  color: #2d3748;
+  font-family: monospace;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .sos-content {
+    padding-top: 40px;
+  }
+
+  .sos-admin-btn {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .result-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+}

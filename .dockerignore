@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.venv/
+
+# Frontend (ignored in backend image)
+frontend/
+node_modules/
+
+# Audio and temp uploads
+temp_uploads/
+*.wav
+*.mp3
+*.ogg
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+
+# Git
+.git
+.gitignore
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# OS / misc
+.DS_Store
