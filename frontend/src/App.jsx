@@ -13,6 +13,7 @@ function App() {
   const [status, setStatus] = useState("Ready");
   const [isRecording, setIsRecording] = useState(false);
   const [result, setResult] = useState(null);
+  const [textMessage, setTextMessage] = useState("");
 
   const handleSOS = async () => {
     setIsRecording(true);
@@ -66,7 +67,7 @@ function App() {
     const formData = new FormData();
     formData.append("audio_file", audioBlob, "sos_audio.wav");
     formData.append("location_data", `${lat},${lon}`);
-    formData.append("text_message", "React App SOS Triggered");
+    formData.append("text_message", textMessage || "React App SOS Triggered");
 
     try {
       const response = await axios.post(
@@ -149,6 +150,14 @@ function App() {
       <div className="sos-content">
         <h1 className="sos-title">Emergency SOS</h1>
         <p className="sos-subtitle">Tap below to trigger AI assistance</p>
+
+        <textarea
+          className="sos-text-input"
+          value={textMessage}
+          onChange={(e) => setTextMessage(e.target.value)}
+          placeholder="Optional: Describe what's happening..."
+          disabled={isRecording}
+        />
 
         <div className="sos-main-wrapper">
           <button

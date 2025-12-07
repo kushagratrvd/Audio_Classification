@@ -118,6 +118,29 @@
   animation: pulse-ring 2s infinite;
 }
 
+.sos-text-input{
+  width: 100%;
+  max-width: 380px;
+  height: 80px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
+  font-size: 16px;
+  font-family: inherit;
+  resize: none;
+  transition: all 0.2s ease;
+}
+
+.sos-text-input:focus {
+  outline: none;
+  border-color: #ff5c8a;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 92, 138, 0.3);
+}
+
 @keyframes pulse-ring {
   0% {
     transform: translate(-50%, -50%) scale(1);

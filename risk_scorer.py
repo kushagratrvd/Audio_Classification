@@ -11,7 +11,7 @@ import subprocess
 TARGET_DURATION = 3.0 
 N_MFCC = 40
 SAMPLE_RATE = 22050
-DISTRESS_AUDIO_LABELS = ['fear', 'anger', 'disgust']
+DISTRESS_AUDIO_LABELS = ["fear", "angry", "disgust", "sad"]
 DISTRESS_TEXT_LABELS = ['NEGATIVE'] 
 
 # --- Load Assets ---
@@ -139,6 +139,7 @@ def calculate_risk_score(audio_file_path: Optional[str] = None, text_input: Opti
                         audio_emotion = label
         else:
             details["audio_error"] = "Audio processing failed (Codec/FFmpeg issue)"
+        print(f"[LOG] Audio classification result: {audio_emotion} with confidence {audio_confidence:.2f}")
 
     # 2. TEXT CLASSIFICATION
     if text_input and TEXT_CLASSIFIER:
@@ -149,10 +150,12 @@ def calculate_risk_score(audio_file_path: Optional[str] = None, text_input: Opti
                 text_confidence = results['scores'][distress_index]
         except Exception as e:
             print(f"Text analysis error: {e}")
+        print(f"[LOG] Text classification result: {text_confidence:.2f} confidence for distress.")
 
     # 3. FINAL CONFIDENCE-BASED RISK MAPPING
     # Use the max confidence from the two inputs
     final_confidence = max(audio_confidence, text_confidence)
+    print(f"[LOG] Final calculated confidence: {final_confidence:.2f}")
 
     # Define thresholds
     if final_confidence >= 0.85:
