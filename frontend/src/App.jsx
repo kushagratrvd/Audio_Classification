@@ -195,13 +195,6 @@ function App() {
                   {(result.confidence * 100).toFixed(1)}%
                 </div>
               </div>
-
-              <div className="result-block result-block-full">
-                <div className="result-label">Incident ID</div>
-                <div className="result-incident">
-                  #{result.details?.incident_id || "N/A"}
-                </div>
-              </div>
             </div>
           </div>
         )}
